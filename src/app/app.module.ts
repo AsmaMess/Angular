@@ -12,16 +12,20 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import {NgxSpinnerModule} from "ngx-spinner";
 import { RegisterComponent } from './register/register.component';
+import { UserComponent } from './user/user.component';
+import {DataTablesModule} from "angular-datatables";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
+    DataTablesModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
