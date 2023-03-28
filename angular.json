@@ -90,12 +90,20 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/ngx-toastr/toastr.css",
+              "src/styles.css",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "a1c42b6c-dc17-4c99-9ec4-98e2f3961f56"
   }
 }

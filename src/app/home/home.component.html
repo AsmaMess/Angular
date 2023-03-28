@@ -1,0 +1,64 @@
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Chargement de la page...</p>
+</ngx-spinner>
+
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Website menu 07</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body>
+  <div class="container-fluid px-md-5">
+    <div class="row justify-content-between">
+      <div class="col-md-8 order-md-last">
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <a class="navbar-brand" href="index.html">Bienvenue <span>Sur notre application</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 d-flex">
+      </div>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container-fluid">
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fa fa-bars"></span> Menu
+      </button>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <div class="nav-item active"><img src="./assets/orangelogo.jpg" alt="" style="display: flex;align-items: center;margin: 0;padding: 0;"></div>
+        <ul class="navbar-nav m-auto">
+          <li class="nav-item active"><a class="nav-link">Home</a></li>
+          <li class="nav-item"><a class="nav-link">Profil</a></li>
+          <li class="nav-item"><a class="nav-link" *ngIf="this.user.roles[0]=='ROLE_ADMIN'">Gestion des Utilisateurs</a></li>
+          <li class="nav-item"><a class="nav-link" (click)="logoutUser()">Se déconnecter</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- END nav -->
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
+

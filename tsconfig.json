@@ -28,5 +28,9 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+   "compilerOptions": {
+    "target": "es2015",
+    "experimentalDecorators": true
+   }
 }
