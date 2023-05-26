@@ -1,8 +1,6 @@
 export class User {
-   id?:number;
-   name?:string;
+   id:any;
+   lastname?:string;
    firstname?:string;
-   cin?:number;
-   phoneNumber?:number;
    email?:string
 }

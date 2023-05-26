@@ -19,35 +19,35 @@
         <div class="wrap d-md-flex">
           <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
             <div class="text w-100">
-              <h2>Veuillez saisir les coordonnées pour modifier l'utilisateur</h2>
+              <h2>Veuillez saisir les coordonnées pour modifier le bus</h2>
               <a class="btn btn-white btn-outline-white" routerLink="/user">Revenir à la page précédente</a>
             </div>
           </div>
           <div class="login-wrap p-4 p-lg-5">
             <div class="d-flex">
               <div class="w-100">
-                <h3>Modifier un utilisateur</h3>
+                <h3>Modifier un bus</h3>
               </div>
               <br>
             </div>
             <form class="signin-form" >
               <div class="form-group mb-3">
-                <label class="label">Nom</label>
-                <input type="text" id="nom" class="form-control" name="firstName" placeholder="firstName"  [(ngModel)]="User.firstname"   required >
+                <label class="label">Matricule</label>
+                <input type="text" id="matricule" class="form-control" name="matricule" placeholder="matricule"  [(ngModel)]="Bus.matricule"   required >
               </div>
               <div class="form-group mb-3">
-                <label class="label">Prénom</label>
-                <input type="text" id="firstname" class="form-control" name="lastname" placeholder="prénom"  [(ngModel)]="User.lastname"   required>
+                <label class="label">Chauffeur</label>
+                <input type="text" id="Chauffeur" class="form-control" name="Chauffeur" placeholder="chauffeur"  [(ngModel)]="Bus.chauffeur"   required>
               </div>
               <div class="form-group mb-3">
-                <label class="label">Email</label>
-                <input type="email" id="email" class="form-control" name="email" placeholder="email" [(ngModel)]="User.email"   required>
+                <label class="label">Couleur</label>
+                <input type="text" id="Couleur" class="form-control" name="couleur" placeholder="couleur" [(ngModel)]="Bus.couleur"   required>
               </div>
              
              
               <br>
               <div class="form-group">
-                <button class="form-control btn btn-primary submit px-3" (click)="updateUser()">Modifier</button>
+                <button class="form-control btn btn-primary submit px-3" (click)="updateBus()">Modifier</button>
               </div>
             </form>
           </div>

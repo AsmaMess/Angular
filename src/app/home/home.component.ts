@@ -15,8 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(private tokenService:TokenStorageService,private toastr:ToastrService,private router:Router,private spinner:NgxSpinnerService) { }
 
   ngOnInit(): void {
-    this.user=this.tokenService.getUser();
-    console.log(this.user.roles[0]);
+
   }
 
   logoutUser(){

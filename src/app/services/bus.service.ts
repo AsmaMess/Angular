@@ -1,18 +1,24 @@
+
+import { FormControl, FormGroup } from '@angular/forms';
+import { Bus } from '../Models/bus';
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable,throwError } from 'rxjs';
-import {User} from "../Models/user";
+
 import { catchError } from 'rxjs/operators';
 
 
-const API_URL = 'http://localhost:8090/api/users/';
+
+const API_URL = 'http://localhost:8090/api/bus/';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class BusService {
 
-  httpOptions = {
+httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
@@ -20,33 +26,33 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(API_URL+'read')
+  getAllBuses(): Observable<Bus[]> {
+    return this.httpClient.get<Bus[]>(API_URL+'read')
       .pipe(
         catchError(this.errorHandler)
       )
   }
-
-   findUserById(id:any): Observable<User> {
-     return this.httpClient.get<User>(API_URL+'get/'+id)
-       .pipe(
-         catchError(this.errorHandler)
-      )
-   }
-  createUser(){
-    return this.httpClient.post(API_URL+'createuser/',{responseType: 'user'}) 
+  getBus(id_bus:number, bus:Bus)    {
+    return this.httpClient.get(API_URL+'get/'+id_bus)
+      .pipe(
+        catchError(this.errorHandler)
+     )
+  }
+  createBus(){
+    return this.httpClient.post(API_URL+'create/',{responseType: 'bus'}) 
   }
 
- deleteUser(id:any){
-   return this.httpClient.delete(API_URL+'delete/'+ id,{responseType: 'text'})
+ deleteBus(id_bus:any){
+   return this.httpClient.delete(API_URL+'delete/'+ id_bus,{responseType: 'text'})
       .pipe(
          catchError(this.errorHandler)
      )
    }
 
-   updateUser(id:any, user:User): Observable<User> {
-    return this.httpClient.put<User>(API_URL+'update/'+ id, user);
+   updateBus(id:any, bus:Bus): Observable<Bus> {
+    return this.httpClient.put<Bus>(API_URL+'update/'+ id, bus);
    }
+
 
    errorHandler(error:any) {
      let errorMessage = '';

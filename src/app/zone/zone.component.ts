@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import Swal from 'sweetalert2';
-import {UserService} from "../services/user.service";
+import {ZoneService} from "../services/zone.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
@@ -8,34 +8,25 @@ declare var $: any;
 
 @Component({
   selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  templateUrl: './zone.component.html',
+  styleUrls: ['./zone.component.css']
 })
-export class UserComponent implements OnInit {
+export class ZoneComponent implements OnInit {
 
   @ViewChild('datatable', { static: true }) table: any;
-  @Output() deleteUserEvent = new EventEmitter<number>();
+  @Output() deleteZoneEvent = new EventEmitter<number>();
 
-  users: any[] = [];
+  zones: any[] = [];
   errorMessage = '';
   editForm: any = {};
-  constructor(private userService:UserService,private ngxSpinner:NgxSpinnerService,private toastr:ToastrService,private router:Router) { }
+  constructor(private zoneService:ZoneService,private ngxSpinner:NgxSpinnerService,private toastr:ToastrService,private router:Router) { }
 
   ngOnInit() {
-    this.getAllUsers();
+    this.getAllZones();
   }
 
 
-
-
-
-
-
-
-
-
-
-  deleteUser(id:number){
+  deleteZone(id_zone:number){
     Swal.fire({
       title: 'Voulez vous confirmer la suppression?',
       icon: 'warning',
@@ -43,15 +34,14 @@ export class UserComponent implements OnInit {
       showCancelButton: false,
       confirmButtonText: 'Oui',
       denyButtonText: `Non`,
-
     }).then((result) => {
       if (result.isConfirmed) {
-        this.userService.deleteUser(id).subscribe(data=>{
+        this.zoneService.deleteZone(id_zone).subscribe(data=>{
             console.log(data);
           })
-        this.deleteUserEvent.emit(id);
-        this.toastr.success("Utilisateur supprimé avec succés",'Suppression avec succés!',{timeOut:3000});
-        
+        this.deleteZoneEvent.emit(id_zone);
+        this.toastr.success("Zone supprimé avec succés",'Suppression avec succés!');
+        window.location.reload();
       } else if (result.isDenied) {
         Swal.fire('Suppression annulé', '', 'info')
       }
@@ -59,53 +49,17 @@ export class UserComponent implements OnInit {
   }
 
 
-
-
-
-
-
-
-
-
-  findUserById(id:number){
-
-Swal.fire({
-title:'Utilisateur : .',
-icon:'info',
-})
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  getAllUsers(){
-    this.userService.getAllUsers().subscribe(users=>{
-        this.users=users;
+  getAllZones(){
+    this.zoneService.getAllZones().subscribe(zones=>{
+        this.zones=zones;
         const datatable = $(this.table.nativeElement);
         datatable.DataTable({
-          data: this.users,
+          data: this.zones,
           columns: [
-            { title: 'Nom', data: 'lastname' },
-            { title: 'Prénom', data: 'firstname' },
-            { title: 'Email', data: 'email' },
+            { title: 'Nom', data: 'nom_zone' },
+            { title: 'Description', data: 'description' },
             {
+          
               title: 'Actions',
               render: function (data: any, type: any, full: any) {
                 return `
@@ -136,57 +90,23 @@ icon:'info',
 
         datatable.find('.btn-danger').on('click', (event: any) => {
           const id = $(event.currentTarget).data('id');
-          this.deleteUser(id);
+          this.deleteZone(id);
         });
 
-        datatable.find('.btn-warning').on('click', (event: any) => {
+        datatable.find('.btn-primary').on('click', (event: any) => {
           const id = $(event.currentTarget).data('id');
-          this.editUser(id);
+          this.editZone(id);
         });
-
-datatable.find('.btn-success').on('click', (event: any) =>{
-  const id =$(event.currentTarget).data('id');
-  this.findUserById(id);
-});
-
-
-
-
-
       },
       err => {
         this.errorMessage = err.error.message;
       });
   }
 
-
-
-
-
-
-
-
-
-
-
-  editUser(id:number){
-    this.router.navigate(["update/"+id]);
+  editZone(id_zone:number){
+    this.router.navigate(["update/"+id_zone]);
   }
 
-
-
- 
-
-  
-
-
-
-
-
-
-  
-
-
-
-
 }
+
+

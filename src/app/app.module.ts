@@ -1,47 +1,87 @@
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { NgModule} from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import {HttpClientModule} from "@angular/common/http";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {authInterceptorProviders} from "./helpers/auth.interceptor";
+import {FormsModule } from "@angular/forms";
 import { HomeComponent } from './home/home.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import {NgxSpinnerModule} from "ngx-spinner";
-import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
 import {DataTablesModule} from "angular-datatables";
 import { UpdateuserComponent } from './updateuser/updateuser.component';
 import { FooterComponent } from './footer/footer.component';
+import { CreateuserComponent } from './createuser/createuser.component';
+import { BusComponent } from './bus/bus.component';
+import { ZoneComponent } from './zone/zone.component';
+import { RegionComponent } from './region/region.component';
+import { CommonModule } from '@angular/common';
+//import { PlatComponent } from './plat/plat.component';
+import { TableModule } from 'primeng/table';
+import { RatingModule } from 'primeng/rating';
+import { ReactiveFormsModule } from '@angular/forms';
+import{TagModule} from 'primeng/tag';
+
+import { UpdatebusComponent } from './updatebus/updatebus.component';
+import { ChartModule } from 'primeng/chart';
+import { MainComponent } from './main/main.component';
+import { DataViewModule } from 'primeng/dataview';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
     HomeComponent,
     UserComponent,
     UpdateuserComponent,
-    FooterComponent
+    
+
+    FooterComponent,  
+    CreateuserComponent,
+    BusComponent,
+    ZoneComponent,
+    RegionComponent,
+    UpdatebusComponent,
+    MainComponent,
+  
+  
+    
+
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot([]),
     DataTablesModule,
     AppRoutingModule,
     FormsModule,
+    CommonModule,
     HttpClientModule,
+    TableModule,
+    RatingModule ,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 3000,
+    }),
     NgxSpinnerModule,
-
+   // FontAwesomeModule,
+   ToastrModule,
+   ReactiveFormsModule,
+   ChartModule,
+   DataViewModule,
+   TagModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
 })
-export class AppModule { }
+
+export class AppModule {
+
+}

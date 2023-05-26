@@ -2,20 +2,42 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {LoginComponent} from "./login/login.component";
 import {HomeComponent} from "./home/home.component";
-import {RegisterComponent} from "./register/register.component";
 import {UserComponent} from "./user/user.component";
 import {UpdateuserComponent} from "./updateuser/updateuser.component";
+import { CreateuserComponent } from './createuser/createuser.component';
+import { BusComponent } from './bus/bus.component';
+import { ZoneComponent } from './zone/zone.component';
+
+import { UpdatebusComponent } from './updatebus/updatebus.component';
+
+
+
+
+
+
+
+
+
 
 const routes: Routes = [
-  {path:"",component:LoginComponent},
-  {path:"home",component:HomeComponent},
-  {path:"register",component:RegisterComponent},
-  {path:"user",component:UserComponent},
-  {path:"update/:id",component:UpdateuserComponent}
+  {path:"login",component:LoginComponent},
+  {path:"",component:HomeComponent},
+  {path:"users",component:UserComponent},
+  {path:"update/:id",component:UpdateuserComponent},
+  {path:"createuser",component:CreateuserComponent},
+  {path:"bus",component:BusComponent},
+  {path:"zone",component:ZoneComponent},
+  
+  {path:"updatebus/:id", component:UpdatebusComponent},
+  
+
+
+ 
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
