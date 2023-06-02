@@ -20,7 +20,7 @@ import { BusComponent } from './bus/bus.component';
 import { ZoneComponent } from './zone/zone.component';
 import { RegionComponent } from './region/region.component';
 import { CommonModule } from '@angular/common';
-//import { PlatComponent } from './plat/plat.component';
+import { SelectButtonModule } from 'primeng/selectbutton';
 import { TableModule } from 'primeng/table';
 import { RatingModule } from 'primeng/rating';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -29,7 +29,12 @@ import{TagModule} from 'primeng/tag';
 import { UpdatebusComponent } from './updatebus/updatebus.component';
 import { ChartModule } from 'primeng/chart';
 import { MainComponent } from './main/main.component';
-import { DataViewModule } from 'primeng/dataview';
+import { TimelineModule } from 'primeng/timeline';
+import { DataViewModule} from 'primeng/dataview';
+import { MenuComponent } from './menu/menu.component';
+
+
+
 
 
 @NgModule({
@@ -39,8 +44,6 @@ import { DataViewModule } from 'primeng/dataview';
     HomeComponent,
     UserComponent,
     UpdateuserComponent,
-    
-
     FooterComponent,  
     CreateuserComponent,
     BusComponent,
@@ -48,9 +51,9 @@ import { DataViewModule } from 'primeng/dataview';
     RegionComponent,
     UpdatebusComponent,
     MainComponent,
+    MenuComponent,
   
-  
-    
+
 
   ],
   imports: [
@@ -63,6 +66,7 @@ import { DataViewModule } from 'primeng/dataview';
     HttpClientModule,
     TableModule,
     RatingModule ,
+    TimelineModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
@@ -74,7 +78,8 @@ import { DataViewModule } from 'primeng/dataview';
    ReactiveFormsModule,
    ChartModule,
    DataViewModule,
-   TagModule
+   TagModule,
+   SelectButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent],

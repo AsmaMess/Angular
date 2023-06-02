@@ -1,0 +1,187 @@
+
+
+
+<app-home></app-home>
+<br>
+<br>
+<br>
+
+<div class="container">
+    
+
+<div class="card">
+    <p-table
+        #dt1
+        [value]="menus"
+        dataKey="id"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading"
+        [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
+        >
+        <ng-template pTemplate="caption">
+            <div class="flex">
+                <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target), 'contains')" placeholder="Search keyword" />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="min-width:15rem">
+                    <div class="flex align-items-center">
+                       Menu
+                        <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+
+
+
+
+
+
+                
+                <th style="min-width:15rem">
+                   
+                    <div class="flex align-items-center">
+                        Ingrediants
+                       
+
+           
+
+                        
+                    </div>
+
+
+
+                   
+                </th>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <th style="min-width:10rem">
+                    <div class="flex align-items-center">
+                        Date
+                        <p-columnFilter type="date" field="date" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex align-items-center">
+                       Price
+                        <p-columnFilter type="numeric" field="balance" display="menu" currency="USD"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex align-items-center">
+                       Rating
+                        <p-columnFilter field="status" matchMode="equals" display="menu">
+                            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                                
+                            </ng-template>
+                           
+                        </p-columnFilter>
+                        <p-rating [(ngModel)]="value" stars="5">
+                            <ng-template pTemplate="cancel">
+                                <img src="https://primefaces.org/cdn/primeng/images/demo/rating/cancel.png" width="25px" height="25px" />
+                            </ng-template>
+                            <ng-template pTemplate="onicon">
+                                <img src="https://primefaces.org/cdn/primeng/images/demo/rating/custom-icon-active.png" width="25px" height="25px" />
+                            </ng-template>
+                            <ng-template pTemplate="officon">
+                                <img src="https://primefaces.org/cdn/primeng/images/demo/rating/custom-icon.png" width="25px" height="25px" />
+                            </ng-template>
+                        </p-rating>
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex align-items-center">
+                        Activity
+                        <p-columnFilter field="activity" matchMode="between" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
+                            <ng-template pTemplate="filter" let-filter="filterCallback">
+                                <p-slider [ngModel]="activityValues" [range]="true" (onSlideEnd)="filter($any($event.target))" styleClass="m-3"></p-slider>
+                                <div class="flex align-items-center px-2">
+                                    <span>{{ activityValues[0] }}</span>
+                                    <span>{{ activityValues[1] }}</span>
+                                </div>
+                            </ng-template>
+                        </p-columnFilter>
+                    </div>
+                </th>
+                <th style="width: 3rem">
+                    <div class="flex align-items-center">
+                        Verified
+                        <p-columnFilter type="boolean" field="verified" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-menu>
+            <tr>
+                <td>
+                    {{ menu.name }}
+                    
+                </td>
+                <td>
+                    <span class="ml-1 vertical-align-middle">  
+                       <button type="button" class="btn btn-warning mr-2" data-id="${full.id}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                          <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
+                        </svg>
+                      </button></span>
+                </td>
+                
+                <td>
+                    {{ menu.date | date: 'MM/dd/yyyy' }}
+                </td>
+                <td>
+                    {{ menu.balance | currency: 'USD':'symbol' }}
+                </td>
+                <td>
+                    <!-- <p-tag [value]="menu.status" [severity]="getSeverity(menu.status)"></p-tag> -->
+                </td>
+                <td>
+                    <p-progressBar [value]="menu.activity" [showValue]="false"></p-progressBar>
+                </td>
+                <td class="text-center">
+                    <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': menu.verified, 'text-red-500 pi-times-circle': !menu.verified }"></i>
+                </td>
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No customers found.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+</div>

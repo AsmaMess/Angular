@@ -7,8 +7,9 @@ import {UpdateuserComponent} from "./updateuser/updateuser.component";
 import { CreateuserComponent } from './createuser/createuser.component';
 import { BusComponent } from './bus/bus.component';
 import { ZoneComponent } from './zone/zone.component';
-
 import { UpdatebusComponent } from './updatebus/updatebus.component';
+import { MenuComponent } from './menu/menu.component';
+
 
 
 
@@ -27,8 +28,11 @@ const routes: Routes = [
   {path:"createuser",component:CreateuserComponent},
   {path:"bus",component:BusComponent},
   {path:"zone",component:ZoneComponent},
-  
+
   {path:"updatebus/:id", component:UpdatebusComponent},
+  {path:"menu", component:MenuComponent},
+ 
+
   
 
 
