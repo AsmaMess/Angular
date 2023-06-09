@@ -1,5 +1,23 @@
 
 
+    
+    export class Menu {
+        id?: number;
+        date?: string | Date;
+       name ?:string;
+       price?:string
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     export interface Country {
         name?: string;
         code?: string;

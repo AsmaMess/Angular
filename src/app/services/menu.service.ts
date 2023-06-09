@@ -1,21 +1,136 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { Menu } from '../Models/menu';
 
+
+
+
+
+
+
+
+
+
+
+import { throwError } from 'rxjs';
+
+
+
+
+const API_URL = 'http://localhost:8090/menu';
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
 
+    httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      }
+    
+      constructor(private httpClient: HttpClient) { }
+    
+
+
+      getMenus(): Observable<Menu[]> {
+        return this.httpClient.get<Menu[]>(API_URL+'read/')
+          .pipe(
+            catchError(this.errorHandler)
+          )
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      getMenu(id:number, menu:Menu)    {
+        return this.httpClient.get(API_URL+'get-menu/'+id)
+          .pipe(
+            catchError(this.errorHandler)
+         )
+      }
+
+
+
+
+      addMenu(){
+        return this.httpClient.post(API_URL+'create-menu/',{responseType: 'menu'}) 
+      }
+
+
+
+      deleteMenu(id:any){
+        return this.httpClient.delete(API_URL+'delete-menu/'+id,{responseType: 'text'})
+           .pipe(
+              catchError(this.errorHandler)
+          )
+        }
+   
+
+
+
+        updateMenu(id:any, menu:Menu): Observable<Menu> {
+    return this.httpClient.put<Menu>(API_URL+'update-menu/'+ id, menu);
+   }
+
+
+
+
+   
+   errorHandler(error:any) {
+    let errorMessage = '';
+    if(error.error instanceof ErrorEvent) {
+     errorMessage = error.error.message;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   getData() {
     return [
         {
             id: 1000,
-            name: 'James Butt',
+            name: 'Menu1',
             country: {
                 name: 'Algeria',
                 code: 'dz'
             },
             company: 'Benton, John B Jr',
-            date: '2015-09-13',
+            date: '2021-09-13',
             status: 'unqualified',
             verified: true,
             activity: 17,
@@ -27,13 +142,13 @@ export class MenuService {
         },
         {
             id: 1001,
-            name: 'Josephine Darakjy',
+            name: 'Menu 2',
             country: {
                 name: 'Egypt',
                 code: 'eg'
             },
             company: 'Chanay, Jeffrey A Esq',
-            date: '2019-02-09',
+            date: '2022-02-09',
             status: 'proposal',
             verified: true,
             activity: 0,
@@ -45,13 +160,13 @@ export class MenuService {
         },
         {
             id: 1002,
-            name: 'Art Venere',
+            name: 'Menu 3',
             country: {
                 name: 'Panama',
                 code: 'pa'
             },
-            company: 'Chemel, James L Cpa',
-            date: '2017-05-13',
+            company: 'Menu 3',
+            date: '2022-05-13',
             status: 'qualified',
             verified: false,
             activity: 63,
@@ -63,7 +178,7 @@ export class MenuService {
         },
         {
             id: 1003,
-            name: 'Lenna Paprocki',
+            name: 'Menu 4',
             country: {
                 name: 'Slovenia',
                 code: 'si'
@@ -81,13 +196,13 @@ export class MenuService {
         },
         {
             id: 1004,
-            name: 'Donette Foller',
+            name: 'Menu 5',
             country: {
                 name: 'South Africa',
                 code: 'za'
             },
             company: 'Printing Dimensions',
-            date: '2016-05-20',
+            date: '2023-01-20',
             status: 'proposal',
             verified: true,
             activity: 33,

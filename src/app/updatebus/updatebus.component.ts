@@ -14,7 +14,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 export class UpdatebusComponent implements OnInit {
     id_bus:any;
-  bus:any = {};
+    bus:any = {};
     requiredFields=false;
     formBus! : FormGroup;
 
@@ -27,14 +27,43 @@ export class UpdatebusComponent implements OnInit {
       const id_bus=this.activatedRoute.snapshot.params['id'];
       console.log(id_bus) 
 
-       this.busService.getBus(id_bus ,this.bus).subscribe((response:any)=>{
+       this.busService.getBus( id_bus).subscribe((response:any)=>{
       
       this.Bus=response;
-      console.log(id_bus) 
+      console.log(response) 
       
        })
     }
- 
+
+
+
+
+
+
+
+    getBus(){
+      this.id_bus = this.activatedRoute.snapshot.params['id'];
+   this.busService.getBus(this.id_bus).subscribe(data=>{
+   
+    console.log(this.formBus.value.matricule)
+       this.bus=data;
+
+
+    })
+   }
+
+
+     
+
+
+
+
+
+
+
+
+
+
   
      updateBus(){
   
@@ -64,52 +93,14 @@ export class UpdatebusComponent implements OnInit {
         console.log(res)
        
         })
-       
+
         
       // this.toast.success({detail:"Succès",summary:"formation modifiée avec succès"});
-        
-        
         
         
       this.router.navigate(['/bus'])
         
        }
-      }
-  
     
-  //     checkRequiredFields() : boolean{
-  //      const emailPattern: RegExp = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
-  //     const namePattern: RegExp = /^[a-zA-Z\s]*$/;
-  //     if(!this.user.firstname){
-  //       this.toastr.error("Le nom de l'utilisateur est obligatoire", 'Erreur!');
-  //      return this.requiredFields;
-  //    }else if(!namePattern.test(this.user.firstname)){
-  //        this.toastr.warning("Le prénom de l'utilisateur est invalide", 'Attention!');
-  //        return this.requiredFields;
-  //      }
-  //      if(!this.user.lastname){
-  //       this.toastr.error("Le prénom de l'utilisateur est obligatoire", 'Erreur!');
-  //        return this.requiredFields;
-  //     }else if(!namePattern.test(this.user.lastname)){
-  //       this.toastr.warning("Le prénom de l'utilisateur est invalide", 'Attention!');
-  //        return this.requiredFields;
-  //      }
-     
-     
-  //     if(!this.user.email){
-  //        this.toastr.error("L'email de l'utilisateur est obligatoire", 'Erreur!');
-  //       return this.requiredFields;
-  //     }else if(!emailPattern.test(this.user.email)){
-  //       this.toastr.warning("L'email de l'utilisateur est invalide", 'Attention!');
-  //        return this.requiredFields;
-  //     }
-  
-  //     this.requiredFields=true;
-  //      return this.requiredFields;
-  //    }
-  
-  //   }
-  //  function checkRequiredFields() {
-  //    throw new Error('Function not implemented.');
    
-  
+      }

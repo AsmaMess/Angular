@@ -32,7 +32,7 @@ httpOptions = {
         catchError(this.errorHandler)
       )
   }
-  getBus(id_bus:number, bus:Bus)    {
+  getBus(id_bus:any)   {
     return this.httpClient.get(API_URL+'get/'+id_bus)
       .pipe(
         catchError(this.errorHandler)

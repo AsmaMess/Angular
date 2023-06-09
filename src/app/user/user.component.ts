@@ -78,23 +78,6 @@ icon:'info',
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   getAllUsers(){
     this.userService.getAllUsers().subscribe(users=>{
         this.users=users;
@@ -106,9 +89,12 @@ icon:'info',
             { title: 'Prénom', data: 'firstname' },
             { title: 'Email', data: 'email' },
             {
+           
+              
               title: 'Actions',
               render: function (data: any, type: any, full: any) {
                 return `
+                
                <div style="  display: flex;justify-content: center;">
                 <button type="button" class="btn btn-success mr-2" style="background-color: green ; color: white ; border-color: green" data-id="${full.id}">
                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
@@ -150,9 +136,6 @@ datatable.find('.btn-success').on('click', (event: any) =>{
 });
 
 
-
-
-
       },
       err => {
         this.errorMessage = err.error.message;
@@ -162,31 +145,9 @@ datatable.find('.btn-success').on('click', (event: any) =>{
 
 
 
-
-
-
-
-
-
-
   editUser(id:number){
     this.router.navigate(["update/"+id]);
   }
-
-
-
- 
-
-  
-
-
-
-
-
-
-  
-
-
 
 
 }

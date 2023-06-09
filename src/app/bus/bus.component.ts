@@ -49,6 +49,21 @@ export class BusComponent implements OnInit {
   }
 
 
+
+  
+  getBus(id:number){
+
+    Swal.fire({
+    title:'Bus : .',
+    icon:'info',
+    })
+    
+      }
+
+
+
+
+
   getAllBuses(){
     this.busService.getAllBuses().subscribe(buses=>{
         this.buses=buses;
@@ -95,14 +110,29 @@ export class BusComponent implements OnInit {
 
         datatable.find('.btn-warning').on('click', (event: any) => {
           const id_bus = $(event.currentTarget).data('id');
-          console.log("aaaaaaaaa",id_bus)
           this.editBus(id_bus);
         });
-      },
-      err => {
-        this.errorMessage = err.error.message;
+      
+      datatable.find('.btn-success').on('click', (event: any) =>{
+        const id_bus =$(event.currentTarget).data('id');
+        this.getBus(id_bus);
       });
-  }
+      
+      
+            },
+            err => {
+              this.errorMessage = err.error.message;
+            });
+        }
+      
+  
+
+
+
+
+
+
+
 
   editBus(id_bus:number){
     this.router.navigate(["updatebus/"+id_bus]);
