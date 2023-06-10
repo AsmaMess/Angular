@@ -9,6 +9,11 @@ import { BusComponent } from './bus/bus.component';
 import { ZoneComponent } from './zone/zone.component';
 import { UpdatebusComponent } from './updatebus/updatebus.component';
 import { MenuComponent } from './menu/menu.component';
+import { RegionComponent } from './region/region.component';
+import { ReservationComponent } from './reservation/reservation.component';
+import { AddUserComponent } from './Add/add-user/add-user.component';
+import { UpdateregionComponent } from './updateregion/updateregion.component';
+
 
 
 
@@ -31,7 +36,11 @@ const routes: Routes = [
 
   {path:"updatebus/:id", component:UpdatebusComponent},
   {path:"menu", component:MenuComponent},
- 
+ {path:"region",component:RegionComponent},
+ {path:"updateregion/:id", component:UpdateregionComponent},
+
+{path:"reservation",component:ReservationComponent},
+{path:"addUser",component:AddUserComponent},
 
   
 

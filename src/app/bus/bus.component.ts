@@ -51,17 +51,21 @@ export class BusComponent implements OnInit {
 
 
   
-  getBus(id:number){
+  getBus(id_bus:number){
+    const bus = this.buses.find(bus => bus.id_bus === id_bus); 
+    if (bus) { Swal.fire({ title: 'Bus: ' + bus.matricule ,
+    text: 'Chauffeur: '+ bus.chauffeur,
+  
+  
 
-    Swal.fire({
-    title:'Bus : .',
-    icon:'info',
-    })
     
-      }
-
-
-
+    icon: 'info', }); } 
+   
+       
+    else { Swal.fire({ title: 'Region non trouvée', icon: 'error', }); } 
+    console.log("==========>", id_bus); }
+    
+      
 
 
   getAllBuses(){

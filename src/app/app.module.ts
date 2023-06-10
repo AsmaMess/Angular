@@ -32,6 +32,12 @@ import { MainComponent } from './main/main.component';
 import { TimelineModule } from 'primeng/timeline';
 import { DataViewModule} from 'primeng/dataview';
 import { MenuComponent } from './menu/menu.component';
+import { UpdateregionComponent } from './updateregion/updateregion.component';
+import { ReservationComponent } from './reservation/reservation.component';
+import { AddBusComponent } from './Add/add-bus/add-bus.component';
+import { AddUserComponent } from './Add/add-user/add-user.component';
+import { AddRegionComponent } from './Add/add-region/add-region.component';
+import { AddMenuComponent } from './Add/add-menu/add-menu.component';
 
 
 
@@ -52,6 +58,12 @@ import { MenuComponent } from './menu/menu.component';
     UpdatebusComponent,
     MainComponent,
     MenuComponent,
+    UpdateregionComponent,
+    ReservationComponent,
+    AddBusComponent,
+    AddUserComponent,
+    AddRegionComponent,
+    AddMenuComponent,
   
 
 

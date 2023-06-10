@@ -69,12 +69,52 @@ export class UserComponent implements OnInit {
 
   findUserById(id:number){
 
-Swal.fire({
-title:'Utilisateur : .',
-icon:'info',
-})
 
-  }
+    const user = this.users.find(user => user.id === id); 
+
+    if (user) { Swal.fire({ title: 'User: ' + user.firstname +user.lastname ,
+    text: 'Email: '+ user.email,
+    icon: 'info', }); } 
+    else { Swal.fire({ title: 'Utilisateur non trouvé', icon: 'error', }); } 
+    console.log("==========>", id); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  
+  
+
+    
+  
+   
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
